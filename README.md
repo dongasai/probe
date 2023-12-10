@@ -1,6 +1,16 @@
-System Information Provider
+PHP System Information Provider
 ================================
-[![Build Status](https://travis-ci.org/trntv/probe.svg?branch=master)](https://travis-ci.org/trntv/probe)
+> fork from  github.com/aiddroid/probe
+
+> Developed in (Linux)PHP 8.1 version, not tested in other versions
+
+## Install 
+
+```bash
+
+composer require dongasai/probe
+
+```
 
 This package provide an easy interface to get information about system it is running on.
 ```php
