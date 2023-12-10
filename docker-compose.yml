@@ -1,0 +1,11 @@
+version: '3'
+services:
+  p81:
+    build: docker/p81
+    image: dongasai/probe:hyperf81
+    container_name: probe_p81
+    privileged: false
+    volumes:
+      - .:/var/www/html
+    tty: true
+
