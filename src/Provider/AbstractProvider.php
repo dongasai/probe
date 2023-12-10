@@ -91,7 +91,7 @@ abstract class AbstractProvider implements ProviderInterface
      */
     public function getServerSoftware()
     {
-        return $this->getServerVariable('SERVER_SOFTWARE');
+        return $this->getServerVariable('SERVER_SOFTWARE')??'';
     }
 
     /**
@@ -99,7 +99,7 @@ abstract class AbstractProvider implements ProviderInterface
      */
     public function isISS()
     {
-        return strpos(strtolower($this->getServerSoftware()), 'microsoft-iis') !== false;
+        return strpos(mb_strtolower($this->getServerSoftware()), 'microsoft-iis') !== false;
     }
 
     /**
@@ -107,7 +107,7 @@ abstract class AbstractProvider implements ProviderInterface
      */
     public function isNginx()
     {
-        return strpos(strtolower($this->getServerSoftware()), 'nginx') !== false;
+        return strpos(mb_strtolower($this->getServerSoftware()), 'nginx') !== false;
     }
 
     /**
@@ -115,7 +115,7 @@ abstract class AbstractProvider implements ProviderInterface
      */
     public function isApache()
     {
-        return strpos(strtolower($this->getServerSoftware()), 'apache') !== false;
+        return strpos(mb_strtolower($this->getServerSoftware()), 'apache') !== false;
     }
 
     /**

@@ -32,7 +32,17 @@ class LinuxProvider extends AbstractUnixProvider
      */
     public function getOsRelease()
     {
-        return shell_exec('/usr/bin/lsb_release -ds');
+        $osrel =  @shell_exec('/usr/bin/lsb_release -ds') ??'null';
+
+        if($osrel == 'null'){
+            // 使用另一种方式获取
+            $iniString  =  @shell_exec('cat /etc/os-release') ??'null';
+            $ini = parse_ini_string($iniString);
+            $osrel = $ini['PRETTY_NAME']?$ini['PRETTY_NAME']:$ini['NAME'];
+//            var_dump($ini);
+        }
+//        var_dump($osrel);
+        return $osrel;
     }
 
     /**

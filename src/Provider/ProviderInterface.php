@@ -26,6 +26,7 @@ interface ProviderInterface
     public function getOsKernelVersion();
 
     /**
+     * 处理器架构
      * @return string
      */
     public function getArchitecture();

@@ -1,14 +1,21 @@
 <?php
-namespace probe\Tests;
+/**
+ * @author Eugene Terentev <eugene@terentev.net>
+ * @author dongasai <1514582970@qq.com>
+ *
+ */
 
-use PHPUnit_Framework_TestCase;
+namespace ProbeTests;
+
+
+use PHPUnit\Framework\TestCase;
 use Probe\ProviderFactory;
 
-class ProviderFactoryTest extends PHPUnit_Framework_TestCase
+class ProviderFactoryTest extends TestCase
 {
     public function testGetOsType()
     {
-        $this->assertInternalType('string', ProviderFactory::getOsType());
+        $this->assertEquals('Linux', ProviderFactory::getOsType());
     }
 
     public function testGetProvider()

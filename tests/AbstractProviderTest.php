@@ -1,23 +1,18 @@
 <?php
 /**
  * @author Eugene Terentev <eugene@terentev.net>
+ * @author dongasai <1514582970@qq.com>
+ *
  */
 
-namespace Probe\Tests;
+namespace ProbeTests;
+
 
 use Probe\ProviderFactory;
 
-class AbstractProviderTest extends \PHPUnit_Framework_TestCase
+class AbstractProviderTest extends TestCase
 {
-    /**
-     * @var \probe\provider\AbstractProvider
-     */
-    protected $provider;
 
-    public function setUp()
-    {
-        $this->provider = ProviderFactory::create();
-    }
 
     public function testGetPhpVersion()
     {
@@ -31,39 +26,39 @@ class AbstractProviderTest extends \PHPUnit_Framework_TestCase
 
     public function testBooleanResults()
     {
-        $this->assertInternalType('boolean', $this->provider->isNginx());
-        $this->assertInternalType('boolean', $this->provider->isApache());
-        $this->assertInternalType('boolean', $this->provider->isISS());
-        $this->assertInternalType('boolean', $this->provider->isBsdOs());
-        $this->assertInternalType('boolean', $this->provider->isLinuxOs());
-        $this->assertInternalType('boolean', $this->provider->isWindowsOs());
-        $this->assertInternalType('boolean', $this->provider->isMacOs());
-        $this->assertInternalType('boolean', $this->provider->isCli());
-        $this->assertInternalType('boolean', $this->provider->isFpm());
+        $this->assertIsBool($this->provider->isNginx());
+        $this->assertIsBool($this->provider->isApache());
+        $this->assertIsBool($this->provider->isISS());
+        $this->assertIsBool($this->provider->isBsdOs());
+        $this->assertIsBool($this->provider->isLinuxOs());
+        $this->assertIsBool($this->provider->isWindowsOs());
+        $this->assertIsBool($this->provider->isMacOs());
+        $this->assertIsBool($this->provider->isCli());
+        $this->assertIsBool($this->provider->isFpm());
     }
 
     public function testStringResults()
     {
-        $this->assertInternalType('string', $this->provider->getOsRelease());
-        $this->assertInternalType('string', $this->provider->getOsType());
-        $this->assertInternalType('string', $this->provider->getOsKernelVersion());
-        $this->assertInternalType('string', $this->provider->getArchitecture());
-        $this->assertInternalType('string', $this->provider->getCpuModel());
-        $this->assertInternalType('string', $this->provider->getCpuVendor());
-        $this->assertInternalType('string', $this->provider->getPhpInfo());
+        $this->assertIsString($this->provider->getOsRelease());
+        $this->assertIsString($this->provider->getOsType());
+        $this->assertIsString($this->provider->getOsKernelVersion());
+        $this->assertIsString($this->provider->getArchitecture());
+        $this->assertIsString($this->provider->getCpuModel());
+        $this->assertIsString($this->provider->getCpuVendor());
+        $this->assertIsString($this->provider->getPhpInfo());
     }
 
     public function testIntegerResults()
     {
-        $this->assertInternalType('integer', $this->provider->getTotalMem());
+        $this->assertIsInt($this->provider->getTotalMem());
         $this->assertGreaterThan(0, $this->provider->getTotalMem());
-        $this->assertInternalType('integer', $this->provider->getFreeMem());
-        $this->assertInternalType('integer', $this->provider->getUsedMem());
+        $this->assertIsInt($this->provider->getFreeMem());
+        $this->assertIsInt($this->provider->getUsedMem());
     }
 
     public function testGetUptime()
     {
-        $this->assertInternalType('integer', $this->provider->getUptime());
+        $this->assertIsInt($this->provider->getUptime());
         $this->assertGreaterThan(0, $this->provider->getUptime());
     }
 

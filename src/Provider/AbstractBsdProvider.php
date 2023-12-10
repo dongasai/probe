@@ -49,7 +49,7 @@ abstract class AbstractBsdProvider extends AbstractUnixProvider
      */
     public function getOsRelease()
     {
-        return shell_exec('sw_vers -productVersion');
+        return @shell_exec('sw_vers -productVersion');
     }
 
     /**
